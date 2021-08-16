@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: java-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: java-deployment
+  template:
+    metadata:
+      labels:
+        app: java-deployment
+    spec:
+      containers:
+      - name: java-deployment
+        image: demojavaapp.azurecr.io/javasampleapp
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
+      restartPolicy: Always
